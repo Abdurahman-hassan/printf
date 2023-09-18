@@ -9,7 +9,7 @@
 char *_strchr(const char *s, int c);
 int _strlen(char *str);
 char *_itoa(int value, char *str);
-char *_utoa(unsigned long long value, char *str, int base);
+char *_utoa(unsigned long value, char *str, int base);
 char *_toUpper(char *c);
 int reverse_string_with_len(char *buffer, char *str);
 void reverse_string_without_len(char *start, char *end);
