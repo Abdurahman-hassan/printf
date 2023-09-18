@@ -13,7 +13,8 @@ char *_toUpper(char *c);
 int reverse_string_with_len(char *buffer, const char *str);
 void reverse_string_without(char *start, char *end);
 int handle_basic_formats(char *buffer, const char specifier, va_list args);
-int handle_numbers(char *buffer, const char specifier, va_list args);
+int handle_integer_and_binary(char *buffer, const char specifier, va_list args);
+int handle_octal_and_hexa(char *buffer, const char specifier, va_list args);
 int _printf(const char *format, ...);
 
 #endif
