@@ -37,8 +37,7 @@ char *_itoa(int value, char *str)
 	}
 	/*end will hold the converted integer value in reverse */
 	end = str;
-	do
-	{
+	do {
 		/*convert to charachter and add it to the end*/
 		*end++ = '0' + (value % 10);
 		/* update the value, moving the corsur to left */
