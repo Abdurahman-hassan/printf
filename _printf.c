@@ -19,7 +19,7 @@ int process_format(const char *format, int *i, va_list args, char *buffer)
 			handle_basic_formats(buffer + buffer_index, format[*i + 1], args);
 		(*i)++;
 	}
-	else if (_strchr("R", format[*i + 1]))
+	else if (_strchr("rR", format[*i + 1]))
 	{
 		buffer_index +=
 			handle_custom_formats(buffer + buffer_index, format[*i + 1], args);

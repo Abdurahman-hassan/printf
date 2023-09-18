@@ -23,7 +23,7 @@ int handle_basic_formats(char *buffer, const char specifier, va_list args)
 			}
 			break;
 
-		/*get the value of the string and store it char by char in the buffer*/
+			/*get the value of the string and store it char by char in the buffer*/
 		case 's':
 			{
 				str = va_arg(args, char *);
@@ -37,7 +37,7 @@ int handle_basic_formats(char *buffer, const char specifier, va_list args)
 				}
 			}
 			break;
-		/*store % directly in the buffer*/
+			/*store % directly in the buffer*/
 		case '%':
 			{
 				buffer[index++] = '%';
@@ -49,13 +49,13 @@ int handle_basic_formats(char *buffer, const char specifier, va_list args)
 }
 
 /**
-  * handle_custom_formats - this function should handle the rot13
-  * and reversed string
-  * @buffer: buffer to store the the value of the specifier
-  * @specifier: define the exact format (s,c,%) to be printed
-  * @args: list that hold the values
-  * Return: length of the stored charachters
-  */
+ * handle_custom_formats - this function should handle the rot13
+ * and reversed string
+ * @buffer: buffer to store the the value of the specifier
+ * @specifier: define the exact format (s,c,%) to be printed
+ * @args: list that hold the values
+ * Return: length of the stored charachters
+ */
 int handle_custom_formats(char *buffer, const char specifier, va_list args)
 {
 	int index = 0;
@@ -86,6 +86,18 @@ int handle_custom_formats(char *buffer, const char specifier, va_list args)
 					buffer[index++] = *modified_str++;
 				}
 				free(modified_str - index); /*free the copied string*/
+			}
+			break;
+
+		case 'r':
+			{
+				original_str = va_arg(args, char *);
+				if (original_str == NULL)
+				{
+					original_str = "(null)";
+				}
+				index += reverse_string_with_len(buffer + index, original_str);
+
 			}
 			break;
 	}
