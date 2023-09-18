@@ -9,14 +9,15 @@
 
 char *_itoa(int value, char *str)
 {
-	if (!str)
-	{
-		return (NULL);
-	}
 	const long int int_min_abs = 2147483648;
 	/* holds the starting addres of where to store string*/
 	char *start = str;
 	char *end;
+	
+	if (!str)
+	{
+		return (NULL);
+	}
 
 	if (value == INT_MIN)
 	{
