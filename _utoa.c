@@ -4,18 +4,19 @@
   * _utoa - this function convert the numbers to string
   * also convert the decimal to binary octal and hexa
   * as per the base that will we use
-  * @vlaue: the number that will turn into string
+  * @value: the number that will turn into string
   * @str: the buffer that will use
   * @base: 2, 8, 16
   * Return: the adress of buffer -> converted string
   */
-char *_utoa(unsigned long long vlaue, char *str, int base)
+char *_utoa(unsigned long long value, char *str, int base)
 {
 	/* all digits that we will check using it */
 	char allCharHex[] = "0123456789abcdef";
-
 	/* empty buffer + buffer index */
 	char *start = str;
+	/* end is also empty*/
+	char *end = str;
 
 	if (value == 0)
 	{
@@ -26,9 +27,6 @@ char *_utoa(unsigned long long vlaue, char *str, int base)
 		*str = '\0';
 		return (start);
 	}
-
-	/* end is also empty*/
-	char *end = str;
 
 	/* this logic will read from right to left*/
 	/* and make the number reversed */

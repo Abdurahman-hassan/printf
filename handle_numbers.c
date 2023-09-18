@@ -107,6 +107,8 @@ int handle_octal_and_hexa(char *buffer, const char specifier, va_list args)
  */
 int handle_unsigned_pointer(char *buffer, const char specifier, va_list args)
 {
+	int index = 0;
+
 	switch (specifier)
 	{
 		case 'u':
@@ -120,5 +122,6 @@ int handle_unsigned_pointer(char *buffer, const char specifier, va_list args)
 				}
 			}
 			break;
-
+	}
+	return (index);
 }

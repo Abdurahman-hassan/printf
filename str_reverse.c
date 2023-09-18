@@ -7,7 +7,7 @@
  * Return: the length of the string
  */
 
-int reverse_string_with_len(char *buffer, const char *str)
+int reverse_string_with_len(char *buffer, char *str)
 {
 	int len = _strlen(str);
 	int i;

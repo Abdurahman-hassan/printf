@@ -13,34 +13,33 @@ int process_format(const char *format, int *i, va_list args, char *buffer)
 {
 	int buffer_index = 0;
 
-	if (_strchr("cs%", format[i + 1]))
+	if (_strchr("cs%", format[*i + 1]))
 	{
 		buffer_index +=
-			handle_basic_formats(buffer + buffer_index, format[i + 1], args);
-		*(i)++;
+			handle_basic_formats(buffer + buffer_index, format[*i + 1], args);
+		(*i)++;
 	}
-	else if (_strchr("dib", format[i + 1]))
+	else if (_strchr("dib", format[*i + 1]))
 	{
 		buffer_index +=
-			handle_integer_binary(buffer + buffer_index, format[i + 1], args);
-		*(i)++;
+			handle_integer_binary(buffer + buffer_index, format[*i + 1], args);
+		(*i)++;
 	}
-	else if (_strchr("xoX", format[i + 1]))
+	else if (_strchr("xoX", format[*i + 1]))
 	{
 		buffer_index +=
-			handle_octal_hexa(buffer + buffer_index, format[i + 1], args);
-		*(i)++;
+			handle_octal_hexa(buffer + buffer_index, format[*i + 1], args);
+		(*i)++;
 	}
-	else if (_strchr("up", format[i + 1]))
+	else if (_strchr("up", format[*i + 1]))
 	{
 		buffer_index +=
-			handle_unsigned_pointer(buffer + buffer_index, format[i + 1], args);
-		*(i)++;
+			handle_unsigned_pointer(buffer + buffer_index, format[*i + 1], args);
+		(*i)++;
 	}
 	return (buffer_index);
 
 }
-
 
 /**
  * _printf - This function is simlute the original printf
