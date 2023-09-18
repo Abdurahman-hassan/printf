@@ -65,7 +65,7 @@ int _printf(const char *format, ...)
 	int total_printed = 0;
 	va_list args;
 
-	if (format == NULL)
+	if (format == NULL || format[0] == '%' && !format[1])
 	{
 		return (-1);
 	}
