@@ -76,17 +76,16 @@ int handle_custom_formats(char *buffer, const char specifier, va_list args)
 
 				/*check if memory allocation was success*/
 				if (!modified_str)
-				{
 					return (-1);
-				}
 
 				/* modified the copy*/
 				modified_str = _rot13(modified_str);
+
 				while (*modified_str)
 				{
 					buffer[index++] = *modified_str++;
 				}
-				free(modified_str); /*free the copied string*/
+				free(modified_str - index); /*free the copied string*/
 			}
 			break;
 	}
