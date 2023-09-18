@@ -5,6 +5,7 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <limits.h>
 
 char *_strchr(const char *s, int c);
 int _strlen(char *str);
