@@ -16,6 +16,7 @@ int handle_basic_formats(char *buffer, const char specifier, va_list args);
 int handle_integer_binary(char *buffer, const char specifier, va_list args);
 int handle_octal_hexa(char *buffer, const char specifier, va_list args);
 int handle_unsigned_pointer(char *buffer, const char specifier, va_list args);
+int process_format(const char *format, int *i, va_list args, char *buffer);
 int _printf(const char *format, ...);
 
 #endif
