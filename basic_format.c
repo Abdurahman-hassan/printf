@@ -27,6 +27,10 @@ int handle_basic_formats(char *buffer, const char specifier, va_list args)
 		case 's':
 			{
 				str = va_arg(args, char *);
+				if (str == NULL)
+				{
+					str = "(null)";
+				}
 				while (*str)
 				{
 					buffer[index++] = *str++;
