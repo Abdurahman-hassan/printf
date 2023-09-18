@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * handle_integer_and_binary - this function is responsble for
+ * handle_integer_binary - this function is responsble for
  * taking a numbers from _printf if the convinsion is
  * %d %i %b
  * %d, %i: for integers, %b: for binary
@@ -12,7 +12,7 @@
  * @args: the numbers after convinsions
  * Return: the index / length of string
  */
-int handle_integer_and_binary(char *buffer, const char specifier, va_list args)
+int handle_integer_binary(char *buffer, const char specifier, va_list args)
 {
 	int index = 0;
 
@@ -45,7 +45,7 @@ int handle_integer_and_binary(char *buffer, const char specifier, va_list args)
 	return (index);
 }
 /**
- * handle_octal_and_hexa - this function is responsble for
+ * handle_octal_hexa - this function is responsble for
  * taking a numbers from _printf if the convinsion is %o%X%x
  * and then call the _itoa and _utoa function
  * in order to convert these numbers into string
@@ -54,7 +54,7 @@ int handle_integer_and_binary(char *buffer, const char specifier, va_list args)
  * @args: the numbers after convinsions
  * Return: the index / length of string
  */
-int handle_octal_and_hexa(char *buffer, const char specifier, va_list args)
+int handle_octal_hexa(char *buffer, const char specifier, va_list args)
 {
 	int index = 0;
 

@@ -8,7 +8,7 @@
  * Return: length of the stored charachters
  */
 
-int handle_basic_format(char *buffer, const char specifier, va_list args)
+int handle_basic_formats(char *buffer, const char specifier, va_list args)
 {
 	int index = 0;
 	char *str;
