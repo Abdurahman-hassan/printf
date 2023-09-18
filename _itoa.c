@@ -9,7 +9,7 @@
 
 char *_itoa(int value, char *str)
 {
-	if (!*str)
+	if (!str)
 	{
 		return (NULL);
 	}
