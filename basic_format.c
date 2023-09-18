@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * handle_basic_format - it handle the print of charachter, string and %
+ * handle_basic_formats- it handle the print of charachter, string and %
  * @buffer: buffer to store the the value of the specifier
  * @specifier: define the exact format (s,c,%) to be printed
  * @args: list that hold the values
