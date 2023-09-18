@@ -26,7 +26,7 @@ char *_itoa(int value, char *str)
 	{
 		/*convert to charachter and add it to the end*/
 		*end++ = '0' + (value % 10);
-		/* update the value */
+		/* update the value, moving the corsur to left */
 		value /= 10;
 	}
 	*end-- = '\0';
