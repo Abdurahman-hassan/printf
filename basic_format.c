@@ -70,10 +70,8 @@ int handle_custom_formats(char *buffer, const char specifier, va_list args)
 				{
 					str = "(null)";
 				}
-				else
-				{
-					str = _rot13(str);
-				}
+
+				str = _rot13(str);
 				while (*str)
 				{
 					buffer[index++] = *str++;
