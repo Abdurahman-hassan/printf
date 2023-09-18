@@ -59,8 +59,11 @@ int _printf(const char *format, ...)
 	int total_printed = 0;
 	va_list args;
 
+	if (format == NULL)
+	{
+		return (-1);
+	}
 	va_start(args, format);
-
 	for (i = 0; format[i]; i++)
 	{
 		/* check after % if thers csdiouxX and not empty */
