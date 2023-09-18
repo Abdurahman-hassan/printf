@@ -84,6 +84,8 @@ int _printf(const char *format, ...)
 		write(1, buffer, buffer_index);
 		total_printed += buffer_index;
 	}
+	buffer[buffer_index] = '\0';
+
 	va_end(args);
 	return (total_printed);
 }
