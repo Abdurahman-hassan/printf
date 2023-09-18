@@ -1,7 +1,7 @@
 # include "main.h"
 
 /**
-  * rot13 - function that encodes a string using rot13.
+  * _rot13 - function that encodes a string using rot13.
   * @c: is the char that we use
   * Return: char with ((x - A + 13)  % 26 + A))
   * ((x - a + 13) % 26 + a) for lowercase
