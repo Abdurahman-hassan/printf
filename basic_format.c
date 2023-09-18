@@ -59,26 +59,36 @@ int handle_basic_formats(char *buffer, const char specifier, va_list args)
 int handle_custom_formats(char *buffer, const char specifier, va_list args)
 {
 	int index = 0;
-	char *str;
+	char *original_str, *modified_str;
 
 	switch (specifier)
 	{
 		case 'R':
 			{
-				str = va_arg(args, char *);
-				if (str == NULL)
+				original_str = va_arg(args, char *);
+				if (original_str == NULL)
 				{
-					str = "(null)";
+					original_str = "(null)";
 				}
 
-				str = _rot13(str);
-				while (*str)
+				/*make a copy*/
+				modified_str = strdup(original_str);
+
+				/*check if memory allocation was success*/
+				if (!modified_str)
 				{
-					buffer[index++] = *str++;
+					return (-1);
 				}
+
+				/* modified the copy*/
+				modified_str = _rot13(modified_str);
+				while (*modified_str)
+				{
+					buffer[index++] = *modified_str++;
+				}
+				free(modified_str); /*free the copied string*/
 			}
 			break;
 	}
 	return (index);
 }
-
