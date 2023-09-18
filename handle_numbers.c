@@ -1,17 +1,17 @@
 #include "main.h"
 
 /**
-  * handle_numbers - this function is responsble for
-  * taking a numbers from _printf if the convinsion is
-  * %d %i %b
-  * %d, %i: for integers, %b: for binary
-  * and then call the _itoa and _utoa function
-  * in order to convert these numbers into string
-  * @buffer: empty array that we store the data into it
-  * @specifier: %d %i %b
-  * @args: the numbers after convinsions
-  * Return: the index / length of string
-  */
+ * handle_integer_and_binary - this function is responsble for
+ * taking a numbers from _printf if the convinsion is
+ * %d %i %b
+ * %d, %i: for integers, %b: for binary
+ * and then call the _itoa and _utoa function
+ * in order to convert these numbers into string
+ * @buffer: empty array that we store the data into it
+ * @specifier: %d %i %b
+ * @args: the numbers after convinsions
+ * Return: the index / length of string
+ */
 int handle_integer_and_binary(char *buffer, const char specifier, va_list args)
 {
 	int index = 0;
@@ -45,15 +45,15 @@ int handle_integer_and_binary(char *buffer, const char specifier, va_list args)
 	return (index);
 }
 /**
-  * handle_other_numbers - this function is responsble for
-  * taking a numbers from _printf if the convinsion is %o%X%x
-  * and then call the _itoa and _utoa function
-  * in order to convert these numbers into string
-  * @buffer: empty array that we store the data into it
-  * @specifier: %o %x %X
-  * @args: the numbers after convinsions
-  * Return: the index / length of string
-  */
+ * handle_octal_and_hexa - this function is responsble for
+ * taking a numbers from _printf if the convinsion is %o%X%x
+ * and then call the _itoa and _utoa function
+ * in order to convert these numbers into string
+ * @buffer: empty array that we store the data into it
+ * @specifier: %o %x %X
+ * @args: the numbers after convinsions
+ * Return: the index / length of string
+ */
 int handle_octal_and_hexa(char *buffer, const char specifier, va_list args)
 {
 	int index = 0;
@@ -96,4 +96,29 @@ int handle_octal_and_hexa(char *buffer, const char specifier, va_list args)
 			break;
 	}
 	return (index);
+}
+/**
+ * handle_unsigned_pointer - this function is responsible for handling the
+ * printing of unsigned integer with the format %b and the pointer %p
+ * @buffer: array where to store the values of the format
+ * @specifier: the exact format (u or p)
+ * @args: the unsigned int or the pointer value
+ * Return: index to current buffer
+ */
+int handle_unsigned_pointer(char *buffer, const char specifier, va_list args)
+{
+	switch (specifier)
+	{
+		case 'u':
+			{
+				unsigned int value = va_arg(args, unsigned int);
+				char *str = _utoa(value, buffer, 10);
+
+				while (*str)
+				{
+					buffer[index++] = *str++;
+				}
+			}
+			break;
+
 }
