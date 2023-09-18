@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <string.h>
-#include <stdlib>
+#include <stdlib.h>
 
 char *_strchr(const char *s, int c);
 int _strlen(char *str);
