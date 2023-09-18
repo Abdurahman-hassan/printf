@@ -9,7 +9,7 @@
   * @base: 2, 8, 16
   * Return: the adress of buffer -> converted string
   */
-char *_utoa(unsigned long long value, char *str, int base)
+char *_utoa(unsigned long value, char *str, int base)
 {
 	/* all digits that we will check using it */
 	char allCharHex[] = "0123456789abcdef";
