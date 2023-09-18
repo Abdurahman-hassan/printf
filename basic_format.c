@@ -29,7 +29,7 @@ int handle_basic_formats(char *buffer, const char specifier, va_list args)
 				str = va_arg(args, char *);
 				if (str == NULL)
 				{
-					str = "(null)";
+					str = "(nil)";
 				}
 				while (*str)
 				{
