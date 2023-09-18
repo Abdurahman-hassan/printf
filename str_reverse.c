@@ -30,7 +30,7 @@ void reverse_string_without_len(char *start, char *end)
 {
 	char temp;
 
-	if (!*start || !*end)
+	if (!start || !end)
 	{
 		return;
 	}
