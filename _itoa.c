@@ -11,7 +11,7 @@ char *_itoa(int value, char *str)
 {
 	/* holds the starting addres of where to store string*/
 	char *start = str;
-	char *end = str;
+	char *end;
 
 	/* if the integer is negative we first store the sign*/
 	/* then we will make it positive*/
@@ -21,6 +21,7 @@ char *_itoa(int value, char *str)
 		value = -value;
 	}
 	/*end will hold the converted integer value in reverse */
+	end = str;
 	while (value)
 	{
 		*end++ = '0' + (value % 10);
