@@ -13,6 +13,14 @@ char *_itoa(int value, char *str)
 	char *start = str;
 	char *end;
 
+	/* check if the value is 0 or not*/
+	/* if it's 0 assign 0 and return start*/
+	if (value == 0)
+	{
+		*str++ = '0';
+		*str = '\0';
+		return (start);
+	}
 	/* if the integer is negative we first store the sign*/
 	/* then we will make it positive*/
 	if (value < 0)
