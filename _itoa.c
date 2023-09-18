@@ -13,7 +13,7 @@ char *_itoa(int value, char *str)
 	/* holds the starting addres of where to store string*/
 	char *start = str;
 	char *end;
-	
+
 	if (!str)
 	{
 		return (NULL);
@@ -24,16 +24,12 @@ char *_itoa(int value, char *str)
 		*str++ = '-';
 		value = (int) int_min_abs;
 	}
-	/* if the integer is negative we first store the sign*/
-	/* then we will make it positive*/
 	else if (value < 0)
 	{
 		*str++ = '-';
 		value = -value;
 	}
 
-	/* check if the value is 0 or not*/
-	/* if it's 0 assign 0 and return start*/
 	if (value == 0)
 	{
 		*str++ = '0';
