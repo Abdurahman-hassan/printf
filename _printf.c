@@ -56,6 +56,8 @@ int _printf(const char *format, ...)
 {
 	int i;
 	char buffer[BUFFER_SIZE];
+	int buffer_index = 0;
+	int total_printed = 0;
 	va_list args;
 
 	va_start(args, format);
@@ -65,7 +67,7 @@ int _printf(const char *format, ...)
 		/* check after % if thers csdiouxX and not empty */
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			buffer_index += process_format(format, &i, arg, buffer + buffer_index);
+			buffer_index += process_format(format, &i, args, buffer + buffer_index);
 		}
 		else
 		{
