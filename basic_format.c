@@ -52,7 +52,7 @@ int handle_basic_formats(char *buffer, const char specifier, va_list args)
  * handle_custom_formats - this function should handle the rot13
  * and reversed string
  * @buffer: buffer to store the the value of the specifier
- * @specifier: define the exact format (s,c,%) to be printed
+ * @specifier: define the exact format (R , r) to be printed
  * @args: list that hold the values
  * Return: length of the stored charachters
  */
@@ -70,10 +70,8 @@ int handle_custom_formats(char *buffer, const char specifier, va_list args)
 				{
 					original_str = "(null)";
 				}
-
 				/*make a copy*/
 				modified_str = strdup(original_str);
-
 				/*check if memory allocation was success*/
 				if (!modified_str)
 					return (-1);
@@ -88,7 +86,6 @@ int handle_custom_formats(char *buffer, const char specifier, va_list args)
 				free(modified_str - index); /*free the copied string*/
 			}
 			break;
-
 		case 'r':
 			{
 				original_str = va_arg(args, char *);
@@ -97,7 +94,6 @@ int handle_custom_formats(char *buffer, const char specifier, va_list args)
 					original_str = "(null)";
 				}
 				index += reverse_string_with_len(buffer + index, original_str);
-
 			}
 			break;
 	}
