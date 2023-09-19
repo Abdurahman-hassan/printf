@@ -82,7 +82,7 @@ int _printf(const char *format, ...)
 			buffer[buffer_index++] = format[i];
 		}
 		/* leave 1 space for null terminator */
-		if (buffer_index >= BUFFER_SIZE - 1)
+		if (buffer_index >= BUFFER_SIZE - 2)
 		{
 			write(1, buffer, buffer_index);
 			total_printed += buffer_index;
