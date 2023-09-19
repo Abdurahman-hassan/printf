@@ -69,6 +69,7 @@ int _printf(const char *format, ...)
 	int i, buffer_index = 0, total_printed = 0;
 	char buffer[BUFFER_SIZE];
 	va_list args;
+
 	if (!format || (format[0] == '%' && !format[1]) ||
 			(format[0] == '%' && format[1] == ' ' && !format[2]))
 	{
