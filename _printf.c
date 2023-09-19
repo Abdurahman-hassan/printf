@@ -65,8 +65,7 @@ int _printf(const char *format, ...)
 	int total_printed = 0;
 	va_list args;
 
-	if (format == NULL || (format[0] == '%' && !format[1]) ||
-			(format[0] == '%' && format[1] == ' ' && !format[2]))
+	if (!format || (format[0] == '%' && !format[1]))
 	{
 		return (-1);
 	}
@@ -82,7 +81,8 @@ int _printf(const char *format, ...)
 		{
 			buffer[buffer_index++] = format[i];
 		}
-		if (buffer_index >= BUFFER_SIZE)
+		/* leave 1 space for null terminator */
+		if (buffer_index >= BUFFER_SIZE - 1)
 		{
 			write(1, buffer, buffer_index);
 			total_printed += buffer_index;
