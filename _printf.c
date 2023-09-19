@@ -43,6 +43,12 @@ int process_format(const char *format, int *i, va_list args, char *buffer)
 			handle_unsigned_pointer(buffer + buffer_index, format[*i + 1], args);
 		(*i)++;
 	}
+	else if (_strchr("S", format[*i + 1]))
+	{
+		buffer_index +=
+			handle_special_string(buffer + buffer_index, format[*i + 1], args);
+		(*i)++;
+	}
 	else
 	{
 		buffer[buffer_index++] = format[*i + 1];
@@ -54,20 +60,14 @@ int process_format(const char *format, int *i, va_list args, char *buffer)
 
 /**
  * _printf - This function is simlute the original printf
- * This function check after % and call the sutable function
- * these functions need a buffer to store the chars into it
- * and the format cs%uxXou ... etc and the args that take
- * after convinsion from function throght va_arg
  * @format: the string include csuxXo%
  * @...: this is allow to us to add multible convinsion
  * Return: length
  */
 int _printf(const char *format, ...)
 {
-	int i;
+	int i, buffer_index = 0, total_printed = 0;
 	char buffer[BUFFER_SIZE];
-	int buffer_index = 0;
-	int total_printed = 0;
 	va_list args;
 
 	if (!format || (format[0] == '%' && !format[1]))
@@ -77,7 +77,6 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	for (i = 0; format[i]; i++)
 	{
-		/* check after % if thers csdiouxX and not empty */
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			buffer_index += process_format(format, &i, args, buffer + buffer_index);
@@ -86,7 +85,6 @@ int _printf(const char *format, ...)
 		{
 			buffer[buffer_index++] = format[i];
 		}
-		/* leave 1 space for null terminator */
 		if (buffer_index >= BUFFER_SIZE - 1)
 		{
 			write(1, buffer, buffer_index);

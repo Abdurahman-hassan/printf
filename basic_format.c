@@ -102,3 +102,54 @@ int handle_custom_formats(char *buffer, const char specifier, va_list args)
 	}
 	return (index);
 }
+/**
+ * handle_special_string - it will handle the printing of string
+ * that out of the range of the printable ascii charachter
+ * @buffer: buffer to store the string
+ * @specifier : the string that contain special charachter
+ * @args: the string that came after convinsion
+ * Return: length of the string
+ */
+
+int handle_special_string(char *buffer, const char specifier, va_list args)
+{
+	int index = 0;
+	char *str;
+	char hex_buffer[5]; /* 2 char for hex + '\x' + '\0' */
+
+	switch (specifier)
+	{
+		int i;
+
+		case 'S':
+		{
+			str = va_arg(args, char *);
+			if (str == NULL)
+				str = "(null)";
+			while (*str)
+			{
+				if ((*str > 0 && *str < 32) || *str >= 127)
+				{
+					hex_buffer[0] = '\\';
+					hex_buffer[1] = 'x';
+					_utoa((unsigned long)*str, hex_buffer + 2, 16);
+					/* copy if only one hex char was returned */
+					/* in which case add a leading '0' */
+					if (hex_buffer[3] == '\0')
+					{
+						hex_buffer[3] = hex_buffer[2];
+						hex_buffer[2] = '0';
+					}
+					/* copy to the buffer */
+					for (i = 0; hex_buffer[i]; i++)
+						buffer[index++] = hex_buffer[i];
+				}
+				else
+					buffer[index++] = *str;
+				str++;
+			}
+		}
+		break;
+	}
+	return (index);
+}
