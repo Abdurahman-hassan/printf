@@ -97,12 +97,7 @@ int _printf(const char *format, ...)
 		{
 			buffer[buffer_index++] = format[i];
 		}
-		if (buffer_index >= BUFFER_SIZE - 1)
-		{
-			write(1, buffer, buffer_index);
-			total_printed += buffer_index;
-			buffer_index = 0;
-		}
+			total_printed += handle_buffer(buffer, &buffer_index);
 	}
 	if (buffer_index > 0)
 	{
