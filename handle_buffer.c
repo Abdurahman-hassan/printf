@@ -11,7 +11,7 @@ int handle_buffer(char *buffer, int *buffer_index)
 {
 	int written = *buffer_index;
 
-	if (*buffer_index >= BUFFER_SIZE - 1)
+	if (*buffer_index >= BUFFER_SIZE)
 	{
 		write(1, buffer, *buffer_index);
 		*buffer_index = 0;
