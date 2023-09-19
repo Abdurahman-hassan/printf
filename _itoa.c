@@ -9,7 +9,6 @@
 
 char *_itoa(int value, char *str)
 {
-	const long int int_min_abs = 2147483648;
 	/* holds the starting addres of where to store string*/
 	char *start = str;
 	char *end;
@@ -19,31 +18,29 @@ char *_itoa(int value, char *str)
 		return (NULL);
 	}
 
-	if (value == INT_MIN)
-	{
-		*str++ = '-';
-		value = (int) int_min_abs;
-	}
-	else if (value < 0)
-	{
-		*str++ = '-';
-		value = -value;
-	}
-
 	if (value == 0)
 	{
 		*str++ = '0';
 		*str = '\0';
 		return (start);
 	}
+	if (value < 0)
+	{
+		*str++ = '-';
+	}
+
 	/*end will hold the converted integer value in reverse */
 	end = str;
-	do {
+	while (value) 
+	{
+		int rem = value % 10;
+		if (value < 0)
+			rem = -rem;
 		/*convert to charachter and add it to the end*/
-		*end++ = '0' + (value % 10);
+		*end++ = '0' + rem;
 		/* update the value, moving the corsur to left */
 		value /= 10;
-	} while (value);
+	}
 	*end-- = '\0';
 	/*reverse the number back to its originl value*/
 	reverse_string_without_len(str, end);
