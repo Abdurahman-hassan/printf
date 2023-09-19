@@ -108,6 +108,7 @@ int handle_octal_hexa(char *buffer, const char specifier, va_list args)
 int handle_unsigned_pointer(char *buffer, const char specifier, va_list args)
 {
 	int index = 0;
+	char *tmp;
 
 	switch (specifier)
 	{
@@ -119,6 +120,22 @@ int handle_unsigned_pointer(char *buffer, const char specifier, va_list args)
 				while (*str)
 				{
 					buffer[index++] = *str++;
+				}
+			}
+			break;
+		case 'p':
+			{
+				void *ptr = va_arg(args, void *);
+				unsigned long adress = (unsigned long) ptr;
+
+				/* for 0x prefix */
+				buffer[index++] = '0';
+				buffer[index++] = 'x';
+				/* convert to hex*/
+				tmp = _utoa(adress, buffer + index, 16);
+				while (*tmp)
+				{
+					buffer[index++] = *tmp++;
 				}
 			}
 			break;
