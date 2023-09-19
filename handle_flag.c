@@ -30,7 +30,7 @@ char handle_flags(const char *format, int *i)
  * Return: int value of buffer index
  */
 
-int identity_specifier(const char *format, int *i, va_list arg,
+int identify_specifier(const char *format, int *i, va_list args,
 		char *buffer, char flag)
 {
 	int buffer_index = 0;
@@ -65,5 +65,29 @@ int identity_specifier(const char *format, int *i, va_list arg,
 		buffer_index += handle_special_string(buffer, format[*i + 1], args, flag);
 		(*i)++;
 	}
+	else
+	{
+		buffer[buffer_index++] = format[*i + 1];
+		(*i)++;
+	}
+	return (buffer_index);
+}
+
+/**
+  * - process_format - Modify the process_format 
+  * function to use the split functions
+  * @format: this is the format flag key
+  * @i: is a counter
+  * @args: data from user
+  * @buffer: an empty array
+  */
+int process_format(const char *format, int *i, va_list args, char *buffer)
+{
+	
+	char flag;
+	int buffer_index = 0;
+
+	flag = handle_flags(format, i);
+	buffer_index = identify_specifier(format, i, args, buffer, flag);
 	return (buffer_index);
 }

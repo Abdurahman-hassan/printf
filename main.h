@@ -25,12 +25,15 @@ int handle_octal_hexa(char *buffer, const char specifier,
 		va_list args, char flag);
 int handle_unsigned_pointer(char *buffer, const char specifier,
 		va_list args, char flag);
-int process_format(const char *format, int *i, va_list args, char *buffer);
 int handle_custom_formats(char *buffer, const char specifier, va_list args);
+
+int handle_buffer(char *buffer, int *buffer_index);
 char handle_flags(const char *format, int *i);
-int identity_specifier(const char *format, int *i, va_list arg,
-		char *buffer, char flag);
-int handle_buffer(char *buffer, int *buffer_size);
+int identify_specifier(const char *format, int *i,
+		va_list args, char *buffer, char flag);
+int process_string(const char *format, char *buffer, va_list args);
+int handle_remaining_buffer(char *buffer, int buffer_index);
+int process_format(const char *format, int *i, va_list args, char *buffer);
 int handle_special_string(char *buffer, const char specifier,
 		va_list args, char flag);
 int _printf(const char *format, ...);
