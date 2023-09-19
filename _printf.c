@@ -12,7 +12,13 @@
 int process_format(const char *format, int *i, va_list args, char *buffer)
 {
 	int buffer_index = 0;
+	char flag = '\0';
 
+	if (format[*i + 1] == '+' || format[*i + 1] == ' ' || format[*i + 1] == '#')
+	{
+		flag = format[*i + 1];
+		(*i)++;
+	}
 	if (_strchr("cs%", format[*i + 1]))
 	{
 		buffer_index +=
@@ -28,25 +34,25 @@ int process_format(const char *format, int *i, va_list args, char *buffer)
 	else if (_strchr("dib", format[*i + 1]))
 	{
 		buffer_index +=
-			handle_integer_binary(buffer + buffer_index, format[*i + 1], args);
+			handle_integer_binary(buffer + buffer_index, format[*i + 1], args, flag);
 		(*i)++;
 	}
 	else if (_strchr("xoX", format[*i + 1]))
 	{
 		buffer_index +=
-			handle_octal_hexa(buffer + buffer_index, format[*i + 1], args);
+			handle_octal_hexa(buffer + buffer_index, format[*i + 1], args, flag);
 		(*i)++;
 	}
 	else if (_strchr("up", format[*i + 1]))
 	{
 		buffer_index +=
-			handle_unsigned_pointer(buffer + buffer_index, format[*i + 1], args);
+			handle_unsigned_pointer(buffer + buffer_index, format[*i + 1], args, flag);
 		(*i)++;
 	}
 	else if (_strchr("S", format[*i + 1]))
 	{
 		buffer_index +=
-			handle_special_string(buffer + buffer_index, format[*i + 1], args);
+			handle_special_string(buffer + buffer_index, format[*i + 1], args, flag);
 		(*i)++;
 	}
 	else

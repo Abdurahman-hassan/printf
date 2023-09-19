@@ -111,7 +111,7 @@ int handle_custom_formats(char *buffer, const char specifier, va_list args)
  * Return: length of the string
  */
 
-int handle_special_string(char *buffer, const char specifier, va_list args)
+int handle_special_string(char *buffer, const char specifier, va_list args, char flag)
 {
 	int index = 0;
 	char *str;
@@ -132,7 +132,7 @@ int handle_special_string(char *buffer, const char specifier, va_list args)
 				{
 					hex_buffer[0] = '\\';
 					hex_buffer[1] = 'x';
-					_utoa((unsigned long)*str, hex_buffer + 2, 16);
+					_utoa((unsigned long)*str, hex_buffer + 2, 16, flag);
 					_toUpper(hex_buffer + 2); /* conver the hexa part*/
 					/* copy if only one hex char was returned */
 					/* in which case add a leading '0' */

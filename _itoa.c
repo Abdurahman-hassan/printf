@@ -7,7 +7,7 @@
  * Return: pointer to the string
  */
 
-char *_itoa(int value, char *str)
+char *_itoa(int value, char *str, char flag)
 {
 	/* holds the starting addres of where to store string*/
 	char *start = str;
@@ -25,9 +25,11 @@ char *_itoa(int value, char *str)
 		return (start);
 	}
 	if (value < 0)
-	{
 		*str++ = '-';
-	}
+	else if (flag == '+')
+		*str++ = '+';
+	else if (flag == ' ')
+		*str++ = ' ';
 
 	/*end will hold the converted integer value in reverse */
 	end = str;

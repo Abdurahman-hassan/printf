@@ -12,7 +12,7 @@
  * @args: the numbers after convinsions
  * Return: the index / length of string
  */
-int handle_integer_binary(char *buffer, const char specifier, va_list args)
+int handle_integer_binary(char *buffer, const char specifier, va_list args, char flag)
 {
 	int index = 0;
 
@@ -22,7 +22,7 @@ int handle_integer_binary(char *buffer, const char specifier, va_list args)
 		case 'i':
 			{
 				int value = va_arg(args, int);
-				char *str = _itoa(value, buffer);
+				char *str = _itoa(value, buffer, flag);
 
 				while (*str)
 				{
@@ -33,7 +33,7 @@ int handle_integer_binary(char *buffer, const char specifier, va_list args)
 		case 'b':
 			{
 				unsigned int value = va_arg(args, unsigned int);
-				char *str = _utoa(value, buffer, 2);
+				char *str = _utoa(value, buffer, 2, flag);
 
 				while (*str)
 				{
@@ -54,7 +54,7 @@ int handle_integer_binary(char *buffer, const char specifier, va_list args)
  * @args: the numbers after convinsions
  * Return: the index / length of string
  */
-int handle_octal_hexa(char *buffer, const char specifier, va_list args)
+int handle_octal_hexa(char *buffer, const char specifier, va_list args, char flag)
 {
 	int index = 0;
 
@@ -63,7 +63,7 @@ int handle_octal_hexa(char *buffer, const char specifier, va_list args)
 		case 'o':
 			{
 				unsigned int value = va_arg(args, unsigned int);
-				char *str = _utoa(value, buffer, 8);
+				char *str = _utoa(value, buffer, 8, flag);
 
 				while (*str)
 				{
@@ -74,7 +74,7 @@ int handle_octal_hexa(char *buffer, const char specifier, va_list args)
 		case 'x':
 			{
 				unsigned int value = va_arg(args, unsigned int);
-				char *str = _utoa(value, buffer, 16);
+				char *str = _utoa(value, buffer, 16, flag);
 
 				while (*str)
 				{
@@ -85,7 +85,7 @@ int handle_octal_hexa(char *buffer, const char specifier, va_list args)
 		case 'X':
 			{
 				unsigned int value = va_arg(args, unsigned int);
-				char *str = _utoa(value, buffer, 16);
+				char *str = _utoa(value, buffer, 16, flag);
 
 				_toUpper(str);
 				while (*str)
@@ -105,7 +105,7 @@ int handle_octal_hexa(char *buffer, const char specifier, va_list args)
  * @args: the unsigned int or the pointer value
  * Return: index to current buffer
  */
-int handle_unsigned_pointer(char *buffer, const char specifier, va_list args)
+int handle_unsigned_pointer(char *buffer, const char specifier, va_list args, char flag)
 {
 	int index = 0;
 	char *tmp;
@@ -115,7 +115,7 @@ int handle_unsigned_pointer(char *buffer, const char specifier, va_list args)
 		case 'u':
 			{
 				unsigned int value = va_arg(args, unsigned int);
-				char *str = _utoa(value, buffer, 10);
+				char *str = _utoa(value, buffer, 10, flag);
 
 				while (*str)
 				{
@@ -136,7 +136,7 @@ int handle_unsigned_pointer(char *buffer, const char specifier, va_list args)
 				{
 					buffer[index++] = '0';
 					buffer[index++] = 'x';
-					tmp = _utoa(adress, buffer + index, 16);
+					tmp = _utoa(adress, buffer + index, 16, flag);
 				}
 				while (*tmp)
 				{
