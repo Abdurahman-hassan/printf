@@ -133,6 +133,7 @@ int handle_special_string(char *buffer, const char specifier, va_list args)
 					hex_buffer[0] = '\\';
 					hex_buffer[1] = 'x';
 					_utoa((unsigned long)*str, hex_buffer + 2, 16);
+					_toUpper(hex_buffer + 2); /* conver the hexa part*/
 					/* copy if only one hex char was returned */
 					/* in which case add a leading '0' */
 					if (hex_buffer[3] == '\0')
