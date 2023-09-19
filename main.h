@@ -24,6 +24,7 @@ int handle_octal_hexa(char *buffer, const char specifier, va_list args);
 int handle_unsigned_pointer(char *buffer, const char specifier, va_list args);
 int process_format(const char *format, int *i, va_list args, char *buffer);
 int handle_custom_formats(char *buffer, const char specifier, va_list args);
+int handle_special_string(char *buffer, const char *str);
 int _printf(const char *format, ...);
 
 #endif

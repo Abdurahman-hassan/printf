@@ -1,6 +1,7 @@
 #include "main.h"
 
-/* handle_special_string - it will handle the printing of string
+/**
+ * handle_special_string - it will handle the printing of string
  * that out of the range of the printable ascii charachter
  * @buffer: buffer to store the string
  * @str : the string that contain special charachter
@@ -22,7 +23,7 @@ int handle_special_string(char *buffer, const char *str)
 			/* convert the char to hex and append */
 			_utoa((unsigned char)*str, hex, 16);
 			buffer[index++] = hex[0];
-			buffer[index++] = hex[1];	
+			buffer[index++] = hex[1];
 		}
 		else
 		{
