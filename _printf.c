@@ -37,7 +37,7 @@ int process_format(const char *format, int *i, va_list args, char *buffer)
 			handle_octal_hexa(buffer + buffer_index, format[*i + 1], args);
 		(*i)++;
 	}
-	else if (_strchr("u", format[*i + 1]))
+	else if (_strchr("up", format[*i + 1]))
 	{
 		buffer_index +=
 			handle_unsigned_pointer(buffer + buffer_index, format[*i + 1], args);
