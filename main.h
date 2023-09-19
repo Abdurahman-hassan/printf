@@ -12,6 +12,8 @@
 char *_strchr(const char *s, int c);
 int _strlen(char *str);
 char *_itoa(int value, char *str, char flag);
+char *_utoa_core(unsigned long value, char *str, int base);
+char *_utoa_format(char *str, unsigned long value, int base, char flag);
 char *_utoa(unsigned long value, char *str, int base, char flag);
 char *_toUpper(char *c);
 char *_rot13(char *c);

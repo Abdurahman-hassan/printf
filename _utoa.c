@@ -1,48 +1,60 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * _utoa - this function convert the numbers to string
- * also convert the decimal to binary octal and hexa
- * as per the base that will we use
- * @value: the number that will turn into string
- * @str: the buffer that will use
- * @base: 2, 8, 16
- * @flag: the flag for format specifiers
- * Return: the address of buffer -> converted string
+ * _utoa_core - Convert an unsigned long value to its string representation.
+ * This function is a helper function to break down the conversion task.
+ *
+ * @value: The number to convert.
+ * @str: The buffer to store the converted string.
+ * @base: The base for conversion (2 for binary, 8 for octal, 16 for hex).
+ * 
+ * Return: Pointer to the converted string.
  */
-char *_utoa(unsigned long value, char *str, int base, char flag)
+char *_utoa_core(unsigned long value, char *str, int base)
 {
-	/* all digits that we will check using it */
 	char allCharHex[] = "0123456789abcdef";
-	/* empty buffer + buffer index */
 	char *start = str;
-	/* end is also empty */
 	char *end = str;
 	unsigned long original_value = value;
-	char *ptr;
 
 	if (original_value == 0)
 	{
-		/* assign the string with zero */
 		*str++ = '0';
-		/* end string */
 		*str = '\0';
 		return (start);
 	}
 
-	/* this logic will read from right to left */
-	/* and make the number reversed */
 	while (original_value)
 	{
-		/* fill the end with reversed converted */
-		/* numbers by checking through allCharHex */
 		*end++ = allCharHex[original_value % base];
 		original_value /= base;
 	}
 
 	reverse_string_without_len(str, end - 1);
-	end = str + (end - str) - 1;
+	*(end) = '\0';  /* mark the end of the string */
+
+	return (start);
+}
+
+
+/**
+ * _utoa_format - Format the converted string based on the given flags.
+ * This function adjusts the converted string to match certain format
+ * specifications like adding '0' prefix for octal or '0x' for hex.
+ *
+ * @str: The string to format.
+ * @value: The original number. (used to check for value like 0)
+ * @base: The base for conversion.
+ * @flag: Format flag (like '#' to dictate prefix behavior).
+ * 
+ * Return: Pointer to the formatted string.
+ */
+char *_utoa_format(char *str, unsigned long value, int base,
+		char flag)
+{
+	char *start = str;
+	char *end = str + strlen(str) - 1;
+	char *ptr;
 
 	if (flag == '#' && base == 8 && value != 0)
 	{
@@ -64,4 +76,25 @@ char *_utoa(unsigned long value, char *str, int base, char flag)
 	}
 
 	return (start);
+}
+
+/**
+ * _utoa - Convert an unsigned long value to a string representation with
+ * additional format specifier handling.
+ * This function combines _utoa_core and _utoa_format to provide a full 
+ * conversion with formatting.
+ *
+ * @value: The number to convert.
+ * @str: The buffer to store the converted string.
+ * @base: The base for conversion (2 for binary, 8 for octal, 16 for hex).
+ * @flag: The flag for format specifiers (e.g., '#').
+ * 
+ * Return: Pointer to the converted and formatted string.
+ */
+char *_utoa(unsigned long value, char *str, int base, char flag)
+{
+    _utoa_core(value, str, base);
+    _utoa_format(str, value, base, flag);
+
+    return str;
 }
