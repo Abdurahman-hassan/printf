@@ -1,6 +1,6 @@
 #include "main.h"
 
-/** 
+/**
  * handle_buffer - Function to handle buffer overflow
  * and write the buffer content
  * @buffer: and empty array
@@ -15,7 +15,7 @@ int handle_buffer(char *buffer, int *buffer_index)
 	{
 		write(1, buffer, *buffer_index);
 		*buffer_index = 0;
-		return written;
+		return (written);
 	}
 	return (0);
 }
@@ -66,7 +66,7 @@ int handle_remaining_buffer(char *buffer, int buffer_index)
 	if (buffer_index > 0)
 	{
 		write(1, buffer, buffer_index);
-		return buffer_index;
+		return (buffer_index);
 	}
 	return (0);
 }

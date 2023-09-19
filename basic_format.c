@@ -108,10 +108,11 @@ int handle_custom_formats(char *buffer, const char specifier, va_list args)
  * @buffer: buffer to store the string
  * @specifier : the string that contain special charachter
  * @args: the string that came after convinsion
+ * @flag: the flag key
  * Return: length of the string
  */
-
-int handle_special_string(char *buffer, const char specifier, va_list args, char flag)
+int handle_special_string(char *buffer, const char specifier,
+		va_list args, char flag)
 {
 	int index = 0;
 	char *str;

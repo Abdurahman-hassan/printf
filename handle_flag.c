@@ -6,7 +6,6 @@
  * @i: to track the index
  * Return: flag charachter
  */
-
 char handle_flags(const char *format, int *i)
 {
 	char flag = '\0';
@@ -21,10 +20,10 @@ char handle_flags(const char *format, int *i)
 }
 
 /**
- * identity_specifier - will specify the format with the flag
+ * identify_specifier - will specify the format with the flag
  * @format: string that contain the formats
  * @i: to track the index
- * @arg: the list that contain the value of the specifier
+ * @args: the list that contain the value of the specifier
  * @buffer: to store the value of argument
  * @flag: define the way to print the string
  * Return: int value of buffer index
@@ -74,16 +73,17 @@ int identify_specifier(const char *format, int *i, va_list args,
 }
 
 /**
-  * - process_format - Modify the process_format 
+  * process_format - Modify the process_format
   * function to use the split functions
   * @format: this is the format flag key
   * @i: is a counter
   * @args: data from user
   * @buffer: an empty array
+  * Return: buffer_index
   */
 int process_format(const char *format, int *i, va_list args, char *buffer)
 {
-	
+
 	char flag;
 	int buffer_index = 0;
 

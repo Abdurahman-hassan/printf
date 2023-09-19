@@ -4,6 +4,7 @@
  * _itoa - convert integer to its string
  * @value: the integer to be converted
  * @str: string to store the converted integer
+ * @flag: this is the flag key
  * Return: pointer to the string
  */
 

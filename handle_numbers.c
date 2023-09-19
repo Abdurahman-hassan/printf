@@ -10,9 +10,11 @@
  * @buffer: empty array that we store the data into it
  * @specifier: %d %i %b
  * @args: the numbers after convinsions
+ * @flag: the flag key
  * Return: the index / length of string
  */
-int handle_integer_binary(char *buffer, const char specifier, va_list args, char flag)
+int handle_integer_binary(char *buffer, const char specifier,
+		va_list args, char flag)
 {
 	int index = 0;
 
@@ -52,9 +54,11 @@ int handle_integer_binary(char *buffer, const char specifier, va_list args, char
  * @buffer: empty array that we store the data into it
  * @specifier: %o %x %X
  * @args: the numbers after convinsions
+ * @flag: the flag key
  * Return: the index / length of string
  */
-int handle_octal_hexa(char *buffer, const char specifier, va_list args, char flag)
+int handle_octal_hexa(char *buffer, const char specifier,
+		va_list args, char flag)
 {
 	int index = 0;
 
@@ -103,9 +107,11 @@ int handle_octal_hexa(char *buffer, const char specifier, va_list args, char fla
  * @buffer: array where to store the values of the format
  * @specifier: the exact format (u or p)
  * @args: the unsigned int or the pointer value
+ * @flag: the flag key
  * Return: index to current buffer
  */
-int handle_unsigned_pointer(char *buffer, const char specifier, va_list args, char flag)
+int handle_unsigned_pointer(char *buffer, const char specifier,
+		va_list args, char flag)
 {
 	int index = 0;
 	char *tmp;
