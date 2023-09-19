@@ -84,15 +84,15 @@ int _printf(const char *format, ...)
 		}
 		if (buffer_index >= BUFFER_SIZE)
 		{
-			buffer[buffer_index] = '\0';
 			write(1, buffer, buffer_index);
 			total_printed += buffer_index;
 			buffer_index = 0;
 		}
 	}
+
+	buffer[buffer_index] = '\0';
 	if (buffer_index > 0)
 	{
-		buffer[buffer_index] = '\0';
 		write(1, buffer, buffer_index);
 		total_printed += buffer_index;
 	}
