@@ -69,14 +69,19 @@ int _printf(const char *format, ...)
 	int i, buffer_index = 0, total_printed = 0;
 	char buffer[BUFFER_SIZE];
 	va_list args;
-
-	if (!format || (format[0] == '%' && !format[1]))
+	if (!format || (format[0] == '%' && !format[1]) ||
+			(format[0] == '%' && format[1] == ' ' && !format[2]))
 	{
 		return (-1);
 	}
 	va_start(args, format);
 	for (i = 0; format[i]; i++)
 	{
+		if (format[0] == '%' && format[1] == ' ' && !format[2])
+		{
+			return (-1);
+		}
+
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			buffer_index += process_format(format, &i, args, buffer + buffer_index);
