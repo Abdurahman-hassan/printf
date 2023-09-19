@@ -43,6 +43,11 @@ int process_format(const char *format, int *i, va_list args, char *buffer)
 			handle_unsigned_pointer(buffer + buffer_index, format[*i + 1], args);
 		(*i)++;
 	}
+	else
+	{
+		buffer[buffer_index++] = format[*i + 1];
+		(*i)++;
+	}
 	return (buffer_index);
 
 }
@@ -82,15 +87,13 @@ int _printf(const char *format, ...)
 			buffer[buffer_index++] = format[i];
 		}
 		/* leave 1 space for null terminator */
-		if (buffer_index >= BUFFER_SIZE - 2)
+		if (buffer_index >= BUFFER_SIZE - 1)
 		{
 			write(1, buffer, buffer_index);
 			total_printed += buffer_index;
 			buffer_index = 0;
 		}
 	}
-
-	buffer[buffer_index] = '\0';
 	if (buffer_index > 0)
 	{
 		write(1, buffer, buffer_index);

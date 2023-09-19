@@ -20,6 +20,7 @@ int handle_basic_formats(char *buffer, const char specifier, va_list args)
 		case 'c':
 			{
 				buffer[index++] = (char) va_arg(args, int);
+				buffer[index] = '\0';
 			}
 			break;
 
@@ -35,12 +36,14 @@ int handle_basic_formats(char *buffer, const char specifier, va_list args)
 				{
 					buffer[index++] = *str++;
 				}
+				buffer[index] = '\0';
 			}
 			break;
 			/*store % directly in the buffer*/
 		case '%':
 			{
 				buffer[index++] = '%';
+				buffer[index] = '\0';
 			}
 			break;
 	}
