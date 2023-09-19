@@ -73,10 +73,6 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	for (i = 0; format[i]; i++)
 	{
-		if ( format [i] == '%' && _strchr("sc%", format[i + 1]) && format[i+2] == '%')
-		{
-			return (-1);
-		}
 		/* check after % if thers csdiouxX and not empty */
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
