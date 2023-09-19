@@ -130,13 +130,16 @@ int handle_unsigned_pointer(char *buffer, const char specifier, va_list args)
 
 				if (ptr == NULL)
 				{
-					tmp = "(null)";
+					tmp = "(nil)";
 				}
-				/* for 0x prefix */
-				buffer[index++] = '0';
-				buffer[index++] = 'x';
-				/* convert to hex*/
-				tmp = _utoa(adress, buffer + index, 16);
+				else
+				{
+					/* for 0x prefix */
+					buffer[index++] = '0';
+					buffer[index++] = 'x';
+					/* convert to hex*/
+					tmp = _utoa(adress, buffer + index, 16);
+				}
 				while (*tmp)
 				{
 					buffer[index++] = *tmp++;
