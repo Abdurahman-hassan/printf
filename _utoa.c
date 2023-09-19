@@ -7,7 +7,6 @@
  * @value: The number to convert.
  * @str: The buffer to store the converted string.
  * @base: The base for conversion (2 for binary, 8 for octal, 16 for hex).
- * 
  * Return: Pointer to the converted string.
  */
 char *_utoa_core(unsigned long value, char *str, int base)
@@ -46,7 +45,6 @@ char *_utoa_core(unsigned long value, char *str, int base)
  * @value: The original number. (used to check for value like 0)
  * @base: The base for conversion.
  * @flag: Format flag (like '#' to dictate prefix behavior).
- * 
  * Return: Pointer to the formatted string.
  */
 char *_utoa_format(char *str, unsigned long value, int base,
@@ -59,12 +57,14 @@ char *_utoa_format(char *str, unsigned long value, int base,
 	if (flag == '#' && base == 8 && value != 0)
 	{
 		*(end + 1) = '\0';
-		for (; end >= start; end--) *(end + 1) = *end;
+		for (; end >= start; end--)
+			*(end + 1) = *end;
 		*start = '0';
 	}
 	else if (flag == '#' && (base == 16 || base == -16) && value != 0)
 	{
-		for (ptr = end; ptr >= start; ptr--) *(ptr + 2) = *ptr;
+		for (ptr = end; ptr >= start; ptr--)
+			*(ptr + 2) = *ptr;
 		*start = '0';
 		*(start + 1) = (base == 16) ? 'x' : 'X';
 		end += 2;
@@ -79,22 +79,23 @@ char *_utoa_format(char *str, unsigned long value, int base,
 }
 
 /**
- * _utoa - Convert an unsigned long value to a string representation with
+ * _utoa - Convert an unsigned long value
+ * to a string representation with
  * additional format specifier handling.
- * This function combines _utoa_core and _utoa_format to provide a full 
+ * This function combines _utoa_core and
+ * _utoa_format to provide a full
  * conversion with formatting.
  *
  * @value: The number to convert.
  * @str: The buffer to store the converted string.
  * @base: The base for conversion (2 for binary, 8 for octal, 16 for hex).
  * @flag: The flag for format specifiers (e.g., '#').
- * 
  * Return: Pointer to the converted and formatted string.
  */
 char *_utoa(unsigned long value, char *str, int base, char flag)
 {
-    _utoa_core(value, str, base);
-    _utoa_format(str, value, base, flag);
+	_utoa_core(value, str, base);
+	_utoa_format(str, value, base, flag);
 
-    return str;
+	return (str);
 }
