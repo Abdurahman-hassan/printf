@@ -31,9 +31,10 @@ char *_itoa(int value, char *str)
 
 	/*end will hold the converted integer value in reverse */
 	end = str;
-	while (value) 
+	while (value)
 	{
 		int rem = value % 10;
+
 		if (value < 0)
 			rem = -rem;
 		/*convert to charachter and add it to the end*/
