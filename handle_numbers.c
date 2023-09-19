@@ -127,7 +127,11 @@ int handle_unsigned_pointer(char *buffer, const char specifier, va_list args)
 			{
 				void *ptr = va_arg(args, void *);
 				unsigned long adress = (unsigned long) ptr;
-
+				
+				if (ptr == NULL)
+				{
+					tmp = "(null)";
+				}
 				/* for 0x prefix */
 				buffer[index++] = '0';
 				buffer[index++] = 'x';
