@@ -47,55 +47,55 @@ int process_format(const char *format, int *i, va_list args, char *buffer)
 
 }
 
-/**
- * _printf - This function is simlute the original printf
- * This function check after % and call the sutable function
- * these functions need a buffer to store the chars into it
- * and the format cs%uxXou ... etc and the args that take
- * after convinsion from function throght va_arg
- * @format: the string include csuxXo%
- * @...: this is allow to us to add multible convinsion
- * Return: length
- */
-int _printf(const char *format, ...)
-{
-	int i;
-	char buffer[BUFFER_SIZE];
-	int buffer_index = 0;
-	int total_printed = 0;
-	va_list args;
+			/**
+			 * _printf - This function is simlute the original printf
+			 * This function check after % and call the sutable function
+			 * these functions need a buffer to store the chars into it
+			 * and the format cs%uxXou ... etc and the args that take
+			 * after convinsion from function throght va_arg
+			 * @format: the string include csuxXo%
+			 * @...: this is allow to us to add multible convinsion
+			 * Return: length
+			 */
+			int _printf(const char *format, ...)
+			{
+			int i;
+			char buffer[BUFFER_SIZE];
+			int buffer_index = 0;
+			int total_printed = 0;
+			va_list args;
 
-	if (format == NULL || (format[0] == '%' && !format[1]) ||
-	(format[0] == '%' && format[1] == ' ' && !format[2]))
-	{
-		return (-1);
-	}
-	va_start(args, format);
-	for (i = 0; format[i]; i++)
-	{
-		/* check after % if thers csdiouxX and not empty */
-		if (format[i] == '%' && format[i + 1] != '\0')
-		{
-			buffer_index += process_format(format, &i, args, buffer + buffer_index);
-		}
-		else
-		{
-			buffer[buffer_index++] = format[i];
-		}
-		if (buffer_index >= BUFFER_SIZE - 1)
-		{
-			write(1, buffer, buffer_index);
-			total_printed += buffer_index;
-			buffer_index = 0;
-		}
-	}
-	if (buffer_index > 0)
-	{
-		write(1, buffer, buffer_index);
-		total_printed += buffer_index;
-	}
-	buffer[buffer_index] = '\0';
+			if (format == NULL || (format[0] == '%' && !format[1]) ||
+					(format[0] == '%' && format[1] == ' ' && !format[2]))
+			{
+				return (-1);
+			}
+			va_start(args, format);
+			for (i = 0; format[i]; i++)
+			{
+				/* check after % if thers csdiouxX and not empty */
+				if (format[i] == '%' && format[i + 1] != '\0')
+				{
+					buffer_index += process_format(format, &i, args, buffer + buffer_index);
+				}
+				else
+				{
+					buffer[buffer_index++] = format[i];
+				}
+				if (buffer_index >= BUFFER_SIZE)
+				{
+					write(1, buffer, buffer_index);
+					total_printed += buffer_index;
+					buffer_index = 0;
+				}
+			}
+			if (buffer_index > 0)
+			{
+				write(1, buffer, buffer_index);
+				total_printed += buffer_index;
+			}
+			buffer[buffer_index] = '\0';
 
-	va_end(args);
-	return (total_printed);
-}
+			va_end(args);
+			return (total_printed);
+			}
