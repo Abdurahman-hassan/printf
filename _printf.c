@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	char buffer[BUFFER_SIZE];
 	va_list args;
 
-	memset(buffer, 0, BUFFER_SIZE);
+	memset(buffer, 0, BUFFER_SIZE + buffer_index);
 
 	if (!format || (format[0] == '%' && !format[1]) ||
 			(format[0] == '%' && format[1] == ' ' && !format[2]))
