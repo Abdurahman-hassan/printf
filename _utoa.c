@@ -22,7 +22,7 @@ char *_utoa_core(unsigned long value, char *str, int base)
 		*str = '\0';
 		return (start);
 	}
-
+	/*conveerting the value acording to given base*/
 	while (original_value)
 	{
 		*end++ = allCharHex[original_value % base];
