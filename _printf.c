@@ -8,7 +8,8 @@
  */
 int _printf(const char *format, ...)
 {
-	int buffer_index = 0, total_printed = 0;
+	int buffer_index = 0;
+	int total_printed = 0;
 	char buffer[BUFFER_SIZE];
 	va_list args;
 
