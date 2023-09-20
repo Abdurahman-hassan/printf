@@ -9,6 +9,7 @@
  */
 int handle_buffer(char *buffer, int *buffer_index)
 {
+	/* to keep track of total printed*/
 	int written = *buffer_index;
 
 	if (*buffer_index >= BUFFER_SIZE - 1)
