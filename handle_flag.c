@@ -90,4 +90,4 @@ int process_format(const char *format, int *i, va_list args, char *buffer)
 	flag = handle_flags(format, i);
 	buffer_index = identify_specifier(format, i, args, buffer, flag);
 	return (buffer_index);
-} 
+}
