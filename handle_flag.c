@@ -73,14 +73,14 @@ int identify_specifier(const char *format, int *i, va_list args,
 }
 
 /**
-  * process_format - Modify the process_format
-  * function to use the split functions
-  * @format: this is the format flag key
-  * @i: is a counter
-  * @args: data from user
-  * @buffer: an empty array
-  * Return: buffer_index
-  */
+ * process_format - Modify the process_format
+ * function to use the split functions
+ * @format: this is the format flag key
+ * @i: is a counter
+ * @args: data from user
+ * @buffer: an empty array
+ * Return: buffer_index
+ */
 int process_format(const char *format, int *i, va_list args, char *buffer)
 {
 
