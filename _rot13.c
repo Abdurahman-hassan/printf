@@ -9,8 +9,9 @@
 char *_rot13(char *c)
 {
 	int i = 0, j;
-	/*array that hold all letter*/
+	/*string that hold all letter*/
 	char *letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	/*string that holds the encrypt letter*/
 	char *encoded = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	while (c[i])
