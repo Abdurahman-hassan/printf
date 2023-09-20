@@ -9,6 +9,7 @@
 char *_rot13(char *c)
 {
 	int i = 0, j;
+	/*array that hold all letter*/
 	char *letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char *encoded = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
