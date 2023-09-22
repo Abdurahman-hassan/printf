@@ -49,4 +49,3 @@ int print_string(va_list args, char *buffer,
 	buffer[index] = '\0';
 	return (index);
 }
-
