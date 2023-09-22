@@ -51,7 +51,6 @@ int print_string(va_list args, char *buffer, int *buffer_index,
 		int *total_printed);
 
 /* Main printf function */
-
 int _printf(const char *format, ...);
 
 #endif
