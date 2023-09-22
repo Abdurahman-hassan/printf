@@ -98,9 +98,7 @@ int process_format(const char *format, int *i, va_list args,
 		buffer[*buffer_index] = format[*i];
 		(*buffer_index)++;
 		(*total_printed)++;
-		return (0);
 	}
-
 	/*get the flag if any*/
 	flag = handle_flags(format, i);
 	/*width = handle_width(format, i);*/
