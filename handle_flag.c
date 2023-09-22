@@ -103,7 +103,7 @@ int process_format(const char *format, int *i, va_list args,
 	if (!_strchr("csrRdibxoXupS", format[*i + 1]))
 	{
 		buffer[*buffer_index] = format[*i];
-		(*buff_index)++;
+		buff_index++;
 	}
 
 	return (buff_index);
