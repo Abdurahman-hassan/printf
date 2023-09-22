@@ -2,7 +2,8 @@
 
 /**
  * print_charachter - this function is resposible for printing a characher
- * arg: list contain the charachter to be printed
+ * @buffer: place to store the charachter
+ * @args: list contain the charachter to be printed
  * Return: number of printed
  */
 
