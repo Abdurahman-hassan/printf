@@ -30,13 +30,13 @@ char handle_flags(const char *format, int *i)
  */
 
 int identify_specifier(const char *format, int *i, va_list args,
-		char *buffer, char flag)
+		char *buffer, char flag, int *buff_index, int *total_printed)
 {
 	int buffer_index = 0;
 
 	if (_strchr("cs%", format[*i + 1]))
 	{
-		buffer_index += handle_basic_formats(buffer, format[*i + 1], args);
+		buffer_index += handle_basic_formats(buffer, format[*i + 1], args, buff_index, total_printed);
 		(*i)++;
 	}
 	else if (_strchr("rR", format[*i + 1]))
@@ -81,13 +81,14 @@ int identify_specifier(const char *format, int *i, va_list args,
  * @buffer: an empty array
  * Return: buffer_index
  */
-int process_format(const char *format, int *i, va_list args, char *buffer)
+int process_format(const char *format, int *i, va_list args, char *buffer, int *buffer_index, int *total_printed)
 {
 
 	char flag;
-	int buffer_index = 0;
+	int buff_index = 0;
 	/*get the flag if any*/
 	flag = handle_flags(format, i);
-	buffer_index = identify_specifier(format, i, args, buffer, flag);
-	return (buffer_index);
+	/*width = handle_width(format, i);*/
+	buff_index = identify_specifier(format, i, args, buffer, flag, buffer_index, total_printed);
+	return (buff_index);
 }

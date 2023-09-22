@@ -29,7 +29,7 @@ int handle_buffer(char *buffer, int *buffer_index)
   * @args: values came from the function
   * Return: buffer_index
   */
-int process_string(const char *format, char *buffer, va_list args)
+int process_string(const char *format, char *buffer, va_list args, int *total_printed)
 {
 	int i, buffer_index = 0;
 
@@ -42,7 +42,7 @@ int process_string(const char *format, char *buffer, va_list args)
 
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			buffer_index += process_format(format, &i, args, buffer + buffer_index);
+			buffer_index += process_format(format, &i, args, buffer + buffer_index, &buffer_index, total_printed);
 		}
 		else
 		{

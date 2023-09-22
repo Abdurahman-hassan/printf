@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * handle_basic_formats- it handle the print of charachter, string and %
@@ -8,10 +9,9 @@
  * Return: length of the stored charachters
  */
 
-int handle_basic_formats(char *buffer, const char specifier, va_list args)
+int handle_basic_formats(char *buffer, const char specifier, va_list args, int *buffer_index, int *total_printed)
 {
 	int index = 0;
-	char *str;
 
 	switch (specifier)
 	{
@@ -19,38 +19,26 @@ int handle_basic_formats(char *buffer, const char specifier, va_list args)
 		/* then it will be stored in the buffer*/
 		case 'c':
 			{
-				buffer[index++] = (char) va_arg(args, int);
-				buffer[index] = '\0';
+				index = print_charachter(buffer, args);
 			}
 			break;
 
 			/*get the value of the string and store it char by char in the buffer*/
 		case 's':
 			{
-				str = va_arg(args, char *);
-				if (str == NULL)
-				{
-					str = "(null)";
-				}
-				while (*str)
-				{
-					buffer[index++] = *str++;
-				}
-				buffer[index] = '\0';
+				index += print_string(args, buffer, buffer_index, total_printed);
 			}
 			break;
-			/*store % directly in the buffer*/
 		case '%':
 			{
 				buffer[index++] = '%';
 				buffer[index] = '\0';
 			}
 			break;
+
 	}
-	/*current index of the buffer*/
 	return (index);
 }
-
 /**
  * handle_custom_formats - this function should handle the rot13
  * and reversed string

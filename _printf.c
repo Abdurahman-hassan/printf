@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	buffer_index = process_string(format, buffer, args);
+	buffer_index = process_string(format, buffer, args, &total_printed);
 
 	total_printed += handle_remaining_buffer(buffer, buffer_index);
 
