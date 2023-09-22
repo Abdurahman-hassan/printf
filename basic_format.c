@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * handle_basic_formats- it handle the print of charachter, string and %
@@ -12,7 +11,6 @@
 int handle_basic_formats(char *buffer, const char specifier, va_list args, int *buffer_index, int *total_printed)
 {
 	int index = 0;
-
 	switch (specifier)
 	{
 		/* if its charachter get its value and convert it to char */
