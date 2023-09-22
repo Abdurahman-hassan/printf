@@ -13,8 +13,6 @@ int _printf(const char *format, ...)
 	char buffer[BUFFER_SIZE];
 	va_list args;
 
-	memset(buffer, 0, BUFFER_SIZE + buffer_index);
-
 	if (!format)
 		return (-1);
 	if (format[0] == '%' && !format[1])
