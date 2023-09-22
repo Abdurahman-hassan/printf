@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * handle_flags - this function will handle the printing of flags
@@ -95,15 +96,17 @@ int process_format(const char *format, int *i, va_list args,
 
 	if (!_strchr("csrRdibxoXupS", format[*i + 1]))
 	{
-		buffer[buff_index++] = format[*i];
+		buffer[*buffer_index] = format[*i];
+		(*buffer_index)++;
 	}
-
-	/*get the flag if any*/
-	flag = handle_flags(format, i);
-	/*width = handle_width(format, i);*/
-	buff_index =
-		identify_specifier(format, i, args, buffer,
-				flag, buffer_index, total_printed);
-
+	else
+	{
+		/*get the flag if any*/
+		flag = handle_flags(format, i);
+		/*width = handle_width(format, i);*/
+		buff_index =
+			identify_specifier(format, i, args, buffer,
+					flag, buffer_index, total_printed);
+	}
 	return (buff_index);
 }
