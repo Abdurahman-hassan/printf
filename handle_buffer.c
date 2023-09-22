@@ -22,14 +22,16 @@ int handle_buffer(char *buffer, int *buffer_index)
 }
 
 /**
-  * process_string - Function to process each
-  * character in the format string
-  * @format: the format key
-  * @buffer: an empty string
-  * @args: values came from the function
-  * Return: buffer_index
-  */
-int process_string(const char *format, char *buffer, va_list args, int *total_printed)
+ * process_string - Function to process each
+ * character in the format string
+ * @format: the format key
+ * @buffer: an empty string
+ * @args: values came from the function
+ * @total_printed: total number of printed charachter
+ * Return: buffer_index
+ */
+int process_string(const char *format, char *buffer, va_list
+		args, int *total_printed)
 {
 	int i, buffer_index = 0;
 
@@ -42,7 +44,8 @@ int process_string(const char *format, char *buffer, va_list args, int *total_pr
 
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			buffer_index += process_format(format, &i, args, buffer + buffer_index, &buffer_index, total_printed);
+			buffer_index += process_format(format, &i, args, buffer + buffer_index,
+					&buffer_index, total_printed);
 		}
 		else
 		{
@@ -56,12 +59,12 @@ int process_string(const char *format, char *buffer, va_list args, int *total_pr
 }
 
 /**
-  * handle_remaining_buffer - Function to handle
-  * remaining content in buffer
-  * @buffer: an empty array
-  * @buffer_index: buffer to added to the original one
-  * Return: 0 if success
-  */
+ * handle_remaining_buffer - Function to handle
+ * remaining content in buffer
+ * @buffer: an empty array
+ * @buffer_index: buffer to added to the original one
+ * Return: 0 if success
+ */
 int handle_remaining_buffer(char *buffer, int buffer_index)
 {
 	if (buffer_index > 0)
