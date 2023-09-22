@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 int print_string(va_list args, char *buffer, int *total_printed, int *buffer_index)
 {
@@ -8,7 +7,6 @@ int print_string(va_list args, char *buffer, int *total_printed, int *buffer_ind
 	char *ptr;
 	char *str;
 
-	printf("%d ", *buffer_index);
 	count = *buffer_index;
 	start = *buffer_index;
 	pos = *buffer_index;
