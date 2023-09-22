@@ -44,7 +44,7 @@ int handle_unsigned_pointer(char *buffer, const char specifier,
 int handle_special_string(char *buffer, const char specifier,
 		va_list args, char flag);
 int print_charachter(char *buffer, va_list args);
-int print_string(va_list args, char *buffer, int *total_printed, int *buffer_index);
+int print_string(va_list args, char *buffer, int *buffer_index, int *total_printed);
 
 /* Main printf function */
 int _printf(const char *format, ...);
