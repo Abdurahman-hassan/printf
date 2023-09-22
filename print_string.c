@@ -1,6 +1,7 @@
 #include "main.h"
 
-int print_string(va_list args, char *buffer, int *buffer_index, int *total_printed)
+int print_string(va_list args, char *buffer,
+		int *buffer_index, int *total_printed)
 {
 	int count, start, pos;
 	int index = 0;
