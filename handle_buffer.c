@@ -35,13 +35,13 @@ int process_string(const char *format, char *buffer, va_list
 {
 	int i, buffer_index = 0;
 
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+	{
+		return (-1);
+	}
+
 	for (i = 0; format[i]; i++)
 	{
-		if (format[0] == '%' && format[1] == ' ' && !format[2])
-		{
-			return (-1);
-		}
-
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			buffer_index += process_format(format, &i, args, buffer + buffer_index,
