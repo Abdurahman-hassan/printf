@@ -1,16 +1,19 @@
 #include "main.h"
 
 /**
- * handle_basic_formats- it handle the print of charachter, string and %
- * @buffer: buffer to store the the value of the specifier
- * @specifier: define the exact format (s,c,%) to be printed
- * @args: list that hold the values
- * Return: length of the stored charachters
+ * handle_basic_formats - Handle print of char, string, and %.
+ * @buffer: Storage for the specifier's value.
+ * @specifier: Format (s, c, %) to be printed.
+ * @args: List holding the values.
+ * @buffer_index: Index to the buffer.
+ * @total_printed: Count of total characters printed.
+ * Return: Length of stored characters.
  */
-
-int handle_basic_formats(char *buffer, const char specifier, va_list args, int *buffer_index, int *total_printed)
+int handle_basic_formats(char *buffer, const char specifier,
+		va_list args, int *buffer_index, int *total_printed)
 {
 	int index = 0;
+
 	switch (specifier)
 	{
 		/* if its charachter get its value and convert it to char */
