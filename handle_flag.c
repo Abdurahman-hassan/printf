@@ -93,17 +93,18 @@ int process_format(const char *format, int *i, va_list args,
 	char flag;
 	int buff_index = 0;
 
-	if (!_strchr("csrRdibxoXupS", format[*i + 1]))
-	{
-		buffer[*buffer_index] = format[*i];
-		(*buffer_index)++;
-		(*total_printed)++;
-	}
 	/*get the flag if any*/
 	flag = handle_flags(format, i);
 	/*width = handle_width(format, i);*/
 	buff_index =
 		identify_specifier(format, i, args, buffer,
 				flag, buffer_index, total_printed);
+
+	if (!_strchr("csrRdibxoXupS", format[*i + 1]))
+	{
+		buffer[*buffer_index] = format[*i];
+		(*buff_index)++;
+	}
+
 	return (buff_index);
 }
